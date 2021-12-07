@@ -1,0 +1,5 @@
+package com.lamichhane.userwebservice.security;
+
+public class SecurityConstants {
+
+}

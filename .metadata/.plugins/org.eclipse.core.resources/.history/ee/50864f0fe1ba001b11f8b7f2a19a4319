@@ -1,0 +1,5 @@
+package com.lamichhane.springsercurity.security;
+
+public class SecurityConstants {
+
+}

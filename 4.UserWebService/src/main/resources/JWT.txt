@@ -1,0 +1,85 @@
+Why JWT:-Suppose you send the request to the support department with ticket_number to process.then support department(server) proocessing about your request then 
+it will tell it take some time.after completing processing of your request
+then server wants to send request to you,but it can't sent back to you beacouse it  don't know who you are because http
+is stateless that's why it treats very request as a new request.one idea which can solved this problem is session management.
+this only works for single server.in todays world application can have multiple server.when you send the request to the server then your request can route to any server.
+the solution for this is shared session cash where all thesse server save session information.this problem with this is if this shared session goes down all the session
+ can't work properly.
+
+let's say the customer has to walk up to the service department and the agent asks him what wrong and he tells them the service guy says ok we will work on it come back again 
+tomorrow but imagined you are the service rep and you don't wnat this customer to repeat
+his full storey to some other rep when he comes in tomorrow right so what can you do to 
+make this easy for the customer you don't have any store you don't have anything to save
+this interaction at your end and give him a case id or a token all right so what do you
+do you do all right so here's an idea instead of registering the case in the system and
+giving the customer the case number which you cannot do in this case what you do is you write down all the details of the interaction on the piece of paper and hand it to the 
+customer and say okay bring this back with you the next time you're here and hand it to the customer rep that you talk to they can read this and understand and get all the 
+details okay so this is a change from the previous model the customer rep isn't giving the customer or token id that refers to the details the customer rep is giving the
+ customer the details  itself well if this were to happen does the customer have to rememeber anything well though it's the customer responsibility to get that piece of paper
+  for every subsequent interaction with that support department.the support department doesn't have to remember anything which is good but this is drawback with this approach
+   so let say the customer brings in apiece of paper wiht a history of issues
+how does this support rep trust it there might a malicious customer who takes a piece of paper and writes a complete history of bad customer service and goes to demand for it.
+so it creates problem. so you need to make the record of history trustworthy well one solution is to sign the piece of paper that you give to the customer right.if the 
+suppooert rep can securly sign the information state that's handed to the customer the next time the customer gets it the new support rep can verify the signature to 
+ensure that it's valid .this switched model is what's implied in the jWT mechanism.imagine when the client authenticates instead of the server saving that user information
+ in  a state on the server and returning the ID as a token it return the user information itself as a 
+token right imagine a json paylod being returned with the user information back every time the client makes a subsequent request the client sends the whole JSON token with 
+ request saying this is who i am this is,my id and this is my name the server is isn't saving anything every time request comes in ther server goes ok let's see who this is
+  hmm this JWT says this username is mahesh and they have successfully authenticated okay
+boys let him in.okay this token is not an id here it's a JSON object which has all the information this my friends is what's  called drumroll JSON web tokenss JSON token 
+exchange over the web JWT and off course the problem of security is handled here by signing the token that's handed across each time when a user authenticates the server 
+just doesn't any json object it sends something in a special signed format there's a signature here so when the client sends a subsequent request the the signed jwt is 
+sent back to the server.the server verifies the signature and it trust said only if it's valid in minutes valid all the information that the server needs is right there 
+in the token this is really all that jWT it is.
+
+  
+
+JWT Working principle:-it consists three part
+1.Header 
+2.Payload
+3.Signature
+Example: header.payload.signature
+
+Header:->
+-> Used to store some meta-data
+-> Typically consists of two parts:type and signing algorithm
+Example:
+{
+  "type":"JWT",
+  "alg":"HS512"
+}
+
+Payload:->
+-> Actual data is present which are called Claims
+-> Claims=Facts about entity
+-> Facts about User if we are talking in the context of Authentication
+-> Any Other entity like Company,House,Flight
+
+Types of Claims:
+-> Registered claims: predefined cliams.Optional but recomended.
+Example:- iss,exp,sub,aud
+public Claims:Define at will by those using JWTs.
+
+
+Signature:->
+-> it validates the token
+-> Calculated by base64url encoding header and payload,concatenated together and then hash it 
+   HMAC-SHA256(
+   base64urlEncoding(header) + '.' +
+   base64urlEncoding(payload),
+   secret
+   )
+-> it calcustes the base64url encoding value for the header and payload and concatinated with dot and then we apply secret
+to hash.that's how we get the signature then you can match the signature
+-> when you calculated the signature you will have this secret so what you have done is you would have shared that secret
+with a trusted sender whom you trust so when that entity would have calculated this signature,ok,this signature to from its JWT token.it would have used the same secret to 
+generate this signature based on this payload.
+-> when this whole JWT token has come to your site,you will again thake this sam e payload and the same header and same payolad and apply the same mechanism with the same 
+secret key to generate hash then you will match this hash with this
+
+Advantage of JWT:-
+-> JWTs can be signed using a secret(HMAC or Key Pair)
+-> you can be sure the senders are who they say they are
+-> signature is calculated using the header and the payload
+-> verify that the content hasn't benn tempered
+-> Easy to learn

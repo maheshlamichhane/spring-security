@@ -1,0 +1,36 @@
+package com.lamichhane.springsercurity.security;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import com.lamichhane.springsercurity.user.User;
+
+public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter
+{
+	private AuthenticationManager authenticationManager;
+	
+	public JwtAuthenticationFilter(AuthenticationManager authenticationManager)
+	{
+		this.authenticationManager=	authenticationManager;
+	}
+	
+	public Authentication attemptAuthentication(HttpServletRequest request,HttpServletResponse
+			 respone ) throws AuthenticationException
+	{
+		User user=null;
+		try
+		{
+			
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return null;
+	}
+}

@@ -1,0 +1,22 @@
+package com.lamichhane.springsercurity.security;
+
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
+
+public class JwtAuthorizationFilter extends BasicAuthenticationFilter
+{
+	private UserDetailServiceImpl userDetailServiceImpl;
+	
+	public JwtAuthorizationFilter(AuthenticationManager authenticationManager,
+			UserDetailServiceImpl userDetailsServiceImpl)
+	{
+		super(authenticationManager);
+		this.userDetailServiceImpl=userDetailsServiceImpl;
+	}
+	
+	@Override
+	protected void doFilterInternal(HttpServletRequest request,HttpServletResponse response)
+	{
+		
+	}
+}

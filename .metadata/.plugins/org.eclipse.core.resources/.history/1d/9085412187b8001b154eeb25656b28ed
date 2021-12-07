@@ -1,0 +1,22 @@
+Basic authentication working mechanism:-> when client first request comes in,
+the request will be intercepted by filter security interceptor then it will start looking
+for authorization basic header beacouse we have configured our security here.means it start
+from the confugure method with HttpSecurity parameter.since client did not send any 
+authentication basic scheme,so it will throw an exception.it will throw access denied exception
+.once the access denied exception is thrown,the control will come to our authentication entry
+point.then our authentication entry point will come into picture then commense method will
+be invoked then response will came back to client with 401 status.then client send request 
+with basic authorization header.so once again when the request comes to our api it will be
+intercepted by the FSI(Filter Security Interceptor) this time basic authorization header
+is present.once it find basic authorization header is present then it will invoke the basic
+authentication filter it will not throw exception beacourse header are present.the BAF(basic
+authentication filter) will do it will be base64 decode the authorization header.once decode
+is done then it will create a username ,password authentication token.it will have the user
+name,and the password.once it has created the username and password token,the control will go 
+to the authentication manager.authentication manager will invoke our user,so authentication 
+will invoke our user details service,whatever userDetailsService we have created.this will
+invoke loadUserByUsername method will be invoke. this method get the username which has been
+set in the token.this method will return the UserDetails class object.
+if UserDetail Object contain the user then connection will be successful.request is send back
+to the user.if password is not match then 401 response is sent back to the user or user not 
+found exception.

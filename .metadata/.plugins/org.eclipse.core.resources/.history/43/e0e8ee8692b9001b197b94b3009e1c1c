@@ -1,0 +1,4 @@
+Role:What role do you play in your team,department or organization Example: Admin,User,Developer,BA,
+Librian etc.
+Authorities:What you are authorized/permitted to do,which may depend on your role.example,Get Book,Add
+Book,Update Book,Get User PRofile,Get User Details

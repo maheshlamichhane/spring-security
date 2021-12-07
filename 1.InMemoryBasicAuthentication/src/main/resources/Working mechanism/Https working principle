@@ -1,0 +1,49 @@
+Htttps Working Mechanism:-In Https before sending any request first step which is performed 
+is the SSL Handshake.so in first step,which is performed on between the client and the server
+is the SSL Handshake.it also consisits furthur granular steps.
+During the SSL Handshake if the server is exposing it's http port it wil be normally 443 is 
+the standard but not necessary you can use any other port.when the request comes to the server.
+when the https request comes to the server,then the process of handshakes start.during handshake,
+ther server then sent a certificate back to the client.this certificates has the public key
+of the server.when the client receives the certificate client verifies this public key
+which has been sent by server and also verirfies the certificate also.
+the reason the client is able to verify the certificate is the public key beacouse it has
+the valid list of certifying authorities.then it uses that list to verify the public key and
+certificates of the server.some Certified Authorities are GoDaddy,Amazon,Email.We can get a
+certificate from these CA.Once the certificate is verified by the client it creates a new
+secret key then it encrypted with public key of the server.then client send secret key to 
+the server which has the secret key signed using the public key of the server beacouse in the
+response it got the public key along with certificates.now this secret key with signed with
+public key of server now it can decrypt that secret key and now this secret key can be used
+to exchange betwenn the request and response of server.
+what ever data client will send will decline,will ecrypt that message using the security key
+and the server when it arrives to decrypt the message using the secret key and when the server
+will response,it will encrypt that message with this secret key and then ther server can decrypt
+that message with the same secret key.this is also called symmetirc encryption.beacouse we
+are using the same key for encryption and decryption,other form is assymetric encryption
+where we use different keys in public and private key for encryption,decryption.
+After this all data are encrypted with the secret key.
+we can use our own self signed certificate
+java provide a tool which is called java key tool which can be used to generate our certifi
+cate and private and public key.
+key tool is inside the bin folder
+
+creating certificate:keytool -genkeypair -alias tcserver -storetype JKS -keystore
+serverkeystore.jks -keyalg RSA -keysize 2048 -keypass topsecret -storepass topsecret
+
+what genkeypair does is it generates a public key and associated private key,and it wraps the
+public key into a x.509 self signed certificate.then this certificate is stored inside our
+key store and private key as well.keystore is the file we generated.
+
+keytool -list -keystore serverkeystoer.jks -storepass topsecret
+
+security filter:
+/*
+ * UsernameandpasswordauthenticationFilter
+ * DefaultLoginPageGenarationFilter
+ * DefaultLogoutPageGeneratingFilter
+ * SecurityContextPersistenceFilter
+ * CsrfFilterLogoutFilter
+ * SessionManagementFilter
+ * FilterSecurityInterceptor
+  **/

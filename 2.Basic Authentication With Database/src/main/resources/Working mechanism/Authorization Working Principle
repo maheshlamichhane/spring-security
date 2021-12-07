@@ -1,0 +1,19 @@
+Authorization Working Principle:-Authorization means Restricting unauthorize access of data/
+resource which means providing permission for do something like accessing the particular url.
+In spring security we have something called granted authority.granted authority are high
+level permission that the user is granted few examples can be roles and scopes.Granted 
+authority can be obtained from the users details class and the authentication that authorities
+method as well.
+
+In User class we are implementing UserDetails Class.in this spring class there is one method
+called GrantedAuthority.this authority is supposed to return a collection of granted
+authorities.In this Granted Authority,you will see that this is an interface where it is just 
+returning getAuthority().Granted authority is an authority what is granted to a principle
+or user.these authorities can be roles,administrator,user,supervisor.thes roles are used
+for authorizing the action.Other parts of spring security are also capable of interpreting
+these authorities and they expect them to be present that's why we implement method in user 
+class.
+
+
+we will use a particular implementation of granted authorities,which is simple granted 
+authority.

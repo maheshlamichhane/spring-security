@@ -1,0 +1,6 @@
+package com.lamichhane.springsercurity.security;
+
+public class JwtAuthorizationFilter extends BasicAuthenticationFilter
+{
+
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy package &apos;com.lamichhane.jwt.author&apos; to &apos;3.JWTForMicroservicesExample/src/main/java&apos;&#x0D;&#x0A;- Original project: &apos;3.JWTForMicroservices&apos;&#x0D;&#x0A;- Destination element: &apos;3.JWTForMicroservicesExample/src/main/java&apos;&#x0D;&#x0A;- Original element: &apos;3.JWTForMicroservices/src/main/java/com.lamichhane.jwt.author&apos;" description="Copy package" destination="=3.JWTForMicroservicesExample/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/" element1="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.lamichhane.jwt.author" flags="589830" fragments="1" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyPackages" stamp="1621597319361" version="1.0"/>
+</session>
